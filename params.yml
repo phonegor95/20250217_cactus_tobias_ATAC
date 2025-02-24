@@ -1,0 +1,7 @@
+res_dir                   : 'results/'
+species                   : 'mouse'
+chromatin_state           : 'ENCFF745HLP'
+chip_ontology             : 'organ.liver'
+experiment_types          : 'atac'
+disable_all_enrichments   : true
+split__threshold_values   : 10

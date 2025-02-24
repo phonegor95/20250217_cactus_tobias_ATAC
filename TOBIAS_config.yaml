@@ -1,0 +1,34 @@
+#-------------------------------------------------------------------------#
+#-------------------------- TOBIAS input data ----------------------------#
+#-------------------------------------------------------------------------#
+
+data:
+  NaBu: [results/Processed_Data/1_Preprocessing/ATAC__reads__bam_no_lowQ_dupli_mito/NaBu*.bam]       #list of .bam-files
+  C: [results/Processed_Data/1_Preprocessing/ATAC__reads__bam_no_lowQ_dupli_mito/C*.bam]  #list of .bam-files
+  
+run_info:
+  organism: mouse                           #mouse/human/zebrafish (used for macs to set "--gsize"; alternatively, set --gsize in macs parameters below)
+  fasta: ../references/mouse/genome/sequence/genome.fa                  #.fasta-file containing organism genome. NOTE: must be uncompressed .fa or bgzip compressed compatible with samtools
+  blacklist: ../references/mouse/genome/annotation/blacklisted_regions.bed             #.bed-file containing blacklisted regions
+  gtf: ../references/mouse/genome/annotation/mm10.ncbiRefSeq.gtf                       #.gtf-file for annotation of peaks. NOTE: must be uncompressed .gtf
+  motifs: ../references/mouse/JASPAR2020_CORE_vertebrates_non-redundant_pfms_meme/*.meme          #motifs (directory with files or individual files in MEME/JASPAR/PFM format)
+  output: TOBIAS_output                       #output directory 
+  peaks: results/Processed_Data/1_Preprocessing/ATAC__peaks__split__no_BL_input_RNAi/merged_peaks_cut.bed   #optional; pre-calculated annotated peaks
+  peaks_header: results/Processed_Data/1_Preprocessing/ATAC__peaks__split__no_BL_input_RNAi/merged_peaks_header_cut.txt #optional; header for pre-calculated annotated peaks
+
+#Flags for parts of pipeline to include/exclude (all are True by default)
+flags:
+  plot_comparison: True #True/False
+  plot_correction: True
+  plot_venn: True
+  coverage: True
+  wilson: True
+
+#-------------------------------------------------------------------------#
+#----------------------- Default module parameters -----------------------#
+#-------------------------------------------------------------------------#
+
+macs: "--nomodel --shift -100 --extsize 200 --broad"
+atacorrect: ""
+footprinting: ""
+bindetect: ""

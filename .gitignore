@@ -1,0 +1,8 @@
+data/
+results/
+work/
+.nextflow*
+*_tmp.html
+samplesheet.csv
+samplesheet.log
+metadata.csv
